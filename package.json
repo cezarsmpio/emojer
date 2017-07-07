@@ -1,0 +1,16 @@
+{
+  "name": "emojer",
+  "description": "Emoji Replacer in JavaScript",
+  "main": "index.js",
+  "version": "1.0.0",
+  "scripts": {
+    "test": "echo NO TESTS YET",
+    "dev": "webpack-dev-server",
+    "build": "webpack"
+  },
+  "devDependencies": {
+    "jest": "^20.0.4",
+    "webpack": "^3.1.0",
+    "webpack-dev-server": "^2.5.1"
+  }
+}
