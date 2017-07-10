@@ -9,13 +9,11 @@ const emojiCodes = {
   '[:': 0x1f603,
   '(=': 0x1f603,
   '[=': 0x1f603,
-  ':3': 0x1f600,
+  ':3': 0x1f60a,
   ':D': 0x1f601,
   '=D': 0x1f601,
   ';)': 0x1f609,
   ';]': 0x1f609,
-  '8)': 0x1f913,
-  '8]': 0x1f913,
   '(H)': 0x1f60b,
   ':*': 0x1f618,
   ':|': 0x1f611,
@@ -28,8 +26,6 @@ const emojiCodes = {
   "]':": 0x1f62d,
   ':#': 0x1f910,
   '(A)': 0x1f607,
-  '8)': 0x1f60b,
-  '8]': 0x1f60b,
   ':(': 0x1f614,
   ':[': 0x1f614,
   ':@': 0x1f621,
@@ -41,7 +37,12 @@ const emojiCodes = {
   '(L)': 0x2764,
   '(8)': 0x1f3b5,
   '(Y)': 0x1f44d,
-  '(OK)': 0x1f44c
+  '(OK)': 0x1f44c,
+  ':rock:': 0x1f918
+};
+
+const escapeRegExp = function(str) {
+  return str.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, '\\$&');
 };
 
 const fromCodePoint = function() {
@@ -56,15 +57,13 @@ const fromCodePoint = function() {
 };
 
 const replace = function(text) {
-  const words = text.split(' ');
+  for (let x in emojiCodes) {
+    let code = emojiCodes[x];
 
-  return words
-    .map(word => {
-      return emojiCodes[word.toUpperCase()]
-        ? fromCodePoint(emojiCodes[word.toUpperCase()])
-        : word;
-    })
-    .join(' ');
+    text = text.replace(new RegExp(escapeRegExp(x), 'g'), fromCodePoint(code));
+  }
+
+  return text;
 };
 
 const emojer = function(source) {
