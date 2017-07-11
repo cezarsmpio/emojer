@@ -5,7 +5,7 @@
   "version": "1.0.0",
   "scripts": {
     "test": "echo NO TESTS YET",
-    "dev": "webpack-dev-server",
+    "start": "webpack-dev-server",
     "build": "webpack"
   },
   "devDependencies": {
