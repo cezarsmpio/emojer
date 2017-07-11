@@ -68,4 +68,4 @@ Check the support of native emojis [here](http://caniemoji.com/).
 
 ---
 
-Made with <3
+Made with :heart:
