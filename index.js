@@ -1,5 +1,6 @@
-'use strict';
-
+/**
+ * The list of the emojis following their char codes
+ */
 const emojiCodes = {
   ':)': 0x1f603,
   ':]': 0x1f603,
@@ -41,6 +42,12 @@ const emojiCodes = {
   ':rock:': 0x1f918
 };
 
+/**
+ * Add a new emoji to the list
+ *
+ * @param {String} character The character to be replaced by emoji
+ * @param {Number} charCode The char code
+ */
 const addEmoji = function(character, charCode) {
   if (typeof charCode !== 'number')
     throw new Error('emojer: charCode must be a number.');
@@ -48,10 +55,18 @@ const addEmoji = function(character, charCode) {
   emojiCodes[character] = charCode;
 };
 
+/**
+ * Escapes some characters to be a valid RegExp expression
+ *
+ * @param {String} str The string to be replaced
+ */
 const escapeRegExp = function(str) {
   return str.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, '\\$&');
 };
 
+/**
+ * Polyfill to the native method String.fromCodePoint
+ */
 const fromCodePoint = function() {
   if ('fromCodePoint' in String) return String.fromCodePoint(arguments[0]);
 
@@ -65,6 +80,11 @@ const fromCodePoint = function() {
   return String.fromCharCode.apply(null, chars);
 };
 
+/**
+ * Main function. Find into the text the characters to be replaced by the emojis according to the emojiCodes.
+ *
+ * @param {String} text The text to be replaced by the emojis
+ */
 const replace = function(text) {
   for (let x in emojiCodes) {
     let code = emojiCodes[x];
@@ -75,6 +95,11 @@ const replace = function(text) {
   return text;
 };
 
+/**
+ * Parse the string/source and returns the string with the new emojis
+ *
+ * @param {String} source The source that will be replaced
+ */
 const parse = function(source) {
   try {
     if (typeof source !== 'string')
