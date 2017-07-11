@@ -41,11 +41,20 @@ const emojiCodes = {
   ':rock:': 0x1f918
 };
 
+const addEmoji = function(character, charCode) {
+  if (typeof charCode !== 'number')
+    throw new Error('emojer: charCode must be a number.');
+
+  emojiCodes[character] = charCode;
+};
+
 const escapeRegExp = function(str) {
   return str.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, '\\$&');
 };
 
 const fromCodePoint = function() {
+  if ('fromCodePoint' in String) return String.fromCodePoint(arguments[0]);
+
   let chars = Array.prototype.slice.call(arguments);
 
   for (var i = chars.length; i-- > 0; ) {
@@ -66,7 +75,7 @@ const replace = function(text) {
   return text;
 };
 
-const emojer = function(source) {
+const parse = function(source) {
   try {
     if (typeof source !== 'string')
       throw new Error('The value needs to be a string.');
@@ -77,4 +86,7 @@ const emojer = function(source) {
   }
 };
 
-module.exports = emojer;
+module.exports = {
+  parse,
+  addEmoji
+};
