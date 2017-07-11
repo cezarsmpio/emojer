@@ -2,7 +2,7 @@
   "name": "emojer.js",
   "description": "Smiles to emojis. Natively.",
   "main": "dist/emojer.js",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "scripts": {
     "test": "echo NO TESTS YET",
     "start": "webpack-dev-server",

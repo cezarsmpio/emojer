@@ -1,1 +1,201 @@
-!function(e,r){"object"==typeof exports&&"object"==typeof module?module.exports=r():"function"==typeof define&&define.amd?define([],r):"object"==typeof exports?exports.emojer=r():e.emojer=r()}(this,function(){return function(e){function r(o){if(t[o])return t[o].exports;var n=t[o]={i:o,l:!1,exports:{}};return e[o].call(n.exports,n,n.exports,r),n.l=!0,n.exports}var t={};return r.m=e,r.c=t,r.d=function(e,t,o){r.o(e,t)||Object.defineProperty(e,t,{configurable:!1,enumerable:!0,get:o})},r.n=function(e){var t=e&&e.__esModule?function(){return e.default}:function(){return e};return r.d(t,"a",t),t},r.o=function(e,r){return Object.prototype.hasOwnProperty.call(e,r)},r.p="/dist/",r(r.s=0)}([function(e,r,t){"use strict";var o={":)":128515,":]":128515,"=)":128515,"=]":128515,"(:":128515,"[:":128515,"(=":128515,"[=":128515,":3":128522,":D":128513,"=D":128513,";)":128521,";]":128521,"(H)":128523,":*":128536,":|":128529,":O":128558,":P":128523,";P":128540,":'(":128557,":'[":128557,")':":128557,"]':":128557,":#":129296,"(A)":128519,":(":128532,":[":128532,":@":128545,"(6)":128520,"+(":129314,"+[":129314,"<3":10084,S2:10084,"(L)":10084,"(8)":127925,"(Y)":128077,"(OK)":128076,":rock:":129304},n=function(e,r){if("number"!=typeof r)throw new Error("emojer: charCode must be a number.");o[e]=r},i=function(e){return e.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g,"\\$&")},u=function(){if("fromCodePoint"in String)return String.fromCodePoint(arguments[0]);for(var e=Array.prototype.slice.call(arguments),r=e.length;r-- >0;){var t=e[r]-65536;t>=0&&e.splice(r,1,55296+(t>>10),56320+(1023&t))}return String.fromCharCode.apply(null,e)},f=function(e){for(var r in o){var t=o[r];e=e.replace(new RegExp(i(r),"g"),u(t))}return e},c=function(e){try{if("string"!=typeof e)throw new Error("The value needs to be a string.");return f(e)}catch(e){console.error("emojer: "+e.message)}};e.exports={parse:c,addEmoji:n}}])});
+(function webpackUniversalModuleDefinition(root, factory) {
+	if(typeof exports === 'object' && typeof module === 'object')
+		module.exports = factory();
+	else if(typeof define === 'function' && define.amd)
+		define([], factory);
+	else if(typeof exports === 'object')
+		exports["emojer"] = factory();
+	else
+		root["emojer"] = factory();
+})(this, function() {
+return /******/ (function(modules) { // webpackBootstrap
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+/******/
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId]) {
+/******/ 			return installedModules[moduleId].exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			i: moduleId,
+/******/ 			l: false,
+/******/ 			exports: {}
+/******/ 		};
+/******/
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/
+/******/ 		// Flag the module as loaded
+/******/ 		module.l = true;
+/******/
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/
+/******/
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+/******/
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+/******/
+/******/ 	// define getter function for harmony exports
+/******/ 	__webpack_require__.d = function(exports, name, getter) {
+/******/ 		if(!__webpack_require__.o(exports, name)) {
+/******/ 			Object.defineProperty(exports, name, {
+/******/ 				configurable: false,
+/******/ 				enumerable: true,
+/******/ 				get: getter
+/******/ 			});
+/******/ 		}
+/******/ 	};
+/******/
+/******/ 	// getDefaultExport function for compatibility with non-harmony modules
+/******/ 	__webpack_require__.n = function(module) {
+/******/ 		var getter = module && module.__esModule ?
+/******/ 			function getDefault() { return module['default']; } :
+/******/ 			function getModuleExports() { return module; };
+/******/ 		__webpack_require__.d(getter, 'a', getter);
+/******/ 		return getter;
+/******/ 	};
+/******/
+/******/ 	// Object.prototype.hasOwnProperty.call
+/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
+/******/
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "/dist/";
+/******/
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(__webpack_require__.s = 0);
+/******/ })
+/************************************************************************/
+/******/ ([
+/* 0 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+/**
+ * The list of the emojis following their char codes
+ */
+var emojiCodes = {
+  ':)': 0x1f603,
+  ':]': 0x1f603,
+  '=)': 0x1f603,
+  '=]': 0x1f603,
+  '(:': 0x1f603,
+  '[:': 0x1f603,
+  '(=': 0x1f603,
+  '[=': 0x1f603,
+  ':3': 0x1f60a,
+  ':D': 0x1f601,
+  '=D': 0x1f601,
+  ';)': 0x1f609,
+  ';]': 0x1f609,
+  '(H)': 0x1f60b,
+  ':*': 0x1f618,
+  ':|': 0x1f611,
+  ':O': 0x1f62e,
+  ':P': 0x1f60b,
+  ';P': 0x1f61c,
+  ":'(": 0x1f62d,
+  ":'[": 0x1f62d,
+  ")':": 0x1f62d,
+  "]':": 0x1f62d,
+  ':#': 0x1f910,
+  '(A)': 0x1f607,
+  ':(': 0x1f614,
+  ':[': 0x1f614,
+  ':@': 0x1f621,
+  '(6)': 0x1f608,
+  '+(': 0x1f922,
+  '+[': 0x1f922,
+  '<3': 0x2764,
+  S2: 0x2764,
+  '(L)': 0x2764,
+  '(8)': 0x1f3b5,
+  '(Y)': 0x1f44d,
+  '(OK)': 0x1f44c,
+  ':rock:': 0x1f918
+};
+
+/**
+ * Add a new emoji to the list
+ *
+ * @param {String} character The character to be replaced by emoji
+ * @param {Number} charCode The char code
+ */
+var addEmoji = function addEmoji(character, charCode) {
+  if (typeof charCode !== 'number') throw new Error('emojer: charCode must be a number.');
+
+  emojiCodes[character] = charCode;
+};
+
+/**
+ * Escapes some characters to be a valid RegExp expression
+ *
+ * @param {String} str The string to be replaced
+ */
+var escapeRegExp = function escapeRegExp(str) {
+  return str.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, '\\$&');
+};
+
+/**
+ * Polyfill to the native method String.fromCodePoint
+ */
+var fromCodePoint = function fromCodePoint() {
+  if ('fromCodePoint' in String) return String.fromCodePoint(arguments[0]);
+
+  var chars = Array.prototype.slice.call(arguments);
+
+  for (var i = chars.length; i-- > 0;) {
+    var n = chars[i] - 0x10000;
+    if (n >= 0) chars.splice(i, 1, 0xd800 + (n >> 10), 0xdc00 + (n & 0x3ff));
+  }
+
+  return String.fromCharCode.apply(null, chars);
+};
+
+/**
+ * Main function. Find into the text the characters to be replaced by the emojis according to the emojiCodes.
+ *
+ * @param {String} text The text to be replaced by the emojis
+ */
+var replace = function replace(text) {
+  for (var x in emojiCodes) {
+    var code = emojiCodes[x];
+
+    text = text.replace(new RegExp(escapeRegExp(x), 'g'), fromCodePoint(code));
+  }
+
+  return text;
+};
+
+/**
+ * Parse the string/source and returns the string with the new emojis
+ *
+ * @param {String} source The source that will be replaced
+ */
+var parse = function parse(source) {
+  try {
+    if (typeof source !== 'string') throw new Error('The value needs to be a string.');
+
+    return replace(source);
+  } catch (e) {
+    console.error('emojer: ' + e.message);
+  }
+};
+
+module.exports = {
+  parse: parse,
+  addEmoji: addEmoji
+};
+
+/***/ })
+/******/ ]);
+});
