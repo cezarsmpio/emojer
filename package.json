@@ -1,15 +1,19 @@
 {
-  "name": "emojer",
-  "description": "Emoji Replacer in JavaScript",
+  "name": "emojer.js",
+  "description": "Smiles to emojis. Natively.",
   "main": "index.js",
   "version": "1.0.0",
   "scripts": {
     "test": "echo NO TESTS YET",
     "start": "webpack-dev-server",
-    "build": "webpack"
+    "build": "webpack --config webpack.prod.js",
+    "build:dev": "webpack --config webpack.dev.js",
+    "prepublish": "npm run build:dev"
   },
   "devDependencies": {
-    "jest": "^20.0.4",
+    "babel-core": "^6.25.0",
+    "babel-loader": "^7.1.1",
+    "babel-preset-env": "^1.6.0",
     "webpack": "^3.1.0",
     "webpack-dev-server": "^2.5.1"
   }
