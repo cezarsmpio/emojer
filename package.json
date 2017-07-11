@@ -2,13 +2,14 @@
   "name": "emojer.js",
   "description": "Smiles to emojis. Natively.",
   "main": "dist/emojer.js",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "scripts": {
     "test": "echo NO TESTS YET",
     "start": "webpack-dev-server",
-    "build": "webpack --config webpack.prod.js",
+    "build": "npm run build:prod && npm run build:dev",
+    "build:prod": "webpack --config webpack.prod.js",
     "build:dev": "webpack --config webpack.dev.js",
-    "prepare": "npm run build:dev"
+    "prepare": "npm run build"
   },
   "devDependencies": {
     "babel-core": "^6.25.0",
