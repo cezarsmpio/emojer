@@ -55,6 +55,15 @@ const addEmoji = function(character, charCode) {
   emojiCodes[character] = charCode;
 };
 
+let configs = {
+  span_class: ['emojer-icon'],
+  html: true
+};
+
+const setConfigs = function (newConfigs) {
+  configs = Object.assign({}, configs, newConfigs);
+};
+
 /**
  * Escapes some characters to be a valid RegExp expression
  *
@@ -89,7 +98,11 @@ const replace = function(text) {
   for (let x in emojiCodes) {
     let code = emojiCodes[x];
 
-    text = text.replace(new RegExp(escapeRegExp(x), 'g'), fromCodePoint(code));
+    const value = configs.html === true
+      ? `<span class="${configs.span_class.join(' ')}">${fromCodePoint(code)}</span>` 
+      : fromCodePoint(code);
+
+    text = text.replace(new RegExp(escapeRegExp(x), 'g'), value);
   }
 
   return text;
@@ -113,5 +126,6 @@ const parse = function(source) {
 
 module.exports = {
   parse,
-  addEmoji
+  addEmoji,
+  setConfigs
 };
