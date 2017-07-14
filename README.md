@@ -52,6 +52,28 @@ emojer.addEmoji("--'", 0x1f612);
 
 You can check the full list of emojis and their unicodes [here](http://unicode.org/emoji/charts/full-emoji-list.html).
 
+#### emojer.setConfigs(object: newConfigs)
+
+Emojer uses configs to do somethings, like add css classes to the emoji and a option to render the emojis with a HTML wrapper.
+
+The default configs are:
+```
+{
+  span_classes: [],
+  html: true
+}
+```
+
+You can use it:
+```
+emojer.setConfigs({
+  span_classes: ['foo', 'bar''],
+  html: false
+});
+```
+
+By default, emojer adds the `emojer-icon` css class in every emoji rendered if the flag `html` is `true`.
+
 ## Emojis Available
 
 ```
