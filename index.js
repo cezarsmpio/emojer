@@ -117,6 +117,11 @@ const fromCodePoint = function() {
 };
 
 /**
+ * Detects if the env is a browser.
+ */
+const isBrowser = new Function('try {return this===window;}catch(e){ return false;}');
+
+/**
  * Main function. Find into the text the characters to be replaced by the emojis according to the emojiCodes.
  *
  * @param {String} text The text to be replaced by the emojis
@@ -125,7 +130,7 @@ const replace = function(text) {
   for (let x in emojiCodes) {
     let code = emojiCodes[x];
 
-    const value = configs.html === true
+    const value = configs.html === true && isBrowser()
       ? `<span class="emojer-icon ${configs.span_class.join(' ')}">${fromCodePoint(code)}</span>`
       : fromCodePoint(code);
 
