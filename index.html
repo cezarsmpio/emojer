@@ -32,6 +32,7 @@
       font-size: 2rem;
 
       outline: 0;
+      border: 0;
     }
 
     .section:nth-child(2) {
@@ -55,54 +56,52 @@
 
 <body>
   <div class="container">
-    <section class="section" id="source" contenteditable>
-      Emojer is awesome! :rock:
-      <br>
-      <br> Made with
-      <3
-      <br>
-      <br>
-      Emojis available:
-      <br>
-      :)
-      :]
-      =)
-      =]
-      (:
-      [:
-      (=
-      [=
-      :3
-      :D
-      =D
-      ;)
-      ;]
-      (H)
-      :*
-      :|
-      :O
-      :P
-      ;P
-      :'(
-      :'[
-      )':
-      ]':
-      :#
-      (A)
-      :(
-      :[
-      :@
-      (6)
-      +(
-      +[
-      <3
-      S2
-      (L)
-      (8)
-      (Y)
-      (OK)
-      :rock:
-      </section>
+    <textarea class="section" id="source" contenteditable>
+Emojer is awesome! :rock:
+
+Made with <3
+
+Emojis available:
+
+:)
+:]
+=)
+=]
+(:
+[:
+(=
+[=
+:3
+:D
+=D
+;)
+;]
+(H)
+:*
+:|
+:O
+:P
+;P
+:'(
+:'[
+)':
+]':
+:#
+(A)
+:(
+:[
+:@
+(6)
++(
++[
+<3
+S2
+(L)
+(8)
+(Y)
+(OK)
+:rock:
+      </textarea>
         <section class="section" id="result"></section>
   </div>
 
@@ -153,13 +152,18 @@
       const result = document.querySelector('#result');
 
       const compile = value => {
-        return emojer.parse(value);
+        return emojer.parse(value).replace(/\r?\n/g, '<br />');
       };
 
+      emojer.setConfigs({
+        html: true,
+        span_class: 'oi ahsdjasjhd'
+      });
+
       source.focus();
-      result.innerText = compile(source.innerText);
+      result.innerHTML = compile(source.value);
       source.addEventListener('input', e => {
-        result.innerText = compile(source.innerText);
+        result.innerHTML = compile(source.value);
       });
     })(emojer);
   </script>
