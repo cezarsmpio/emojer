@@ -6,11 +6,7 @@ const createStyle = function () {
   style.rel = 'stylesheet';
   style.type = 'text/css';
 
-  const css = `
-    .emojer-icon {
-      font-family: "Apple Color Emoji", "Segoe UI", "Segoe UI Emoji", "Segoe UI Symbol", Helvetica, Arial, sans-serif;
-    }
-  `;
+  const css = `.emojer-icon{font-family:"Apple Color Emoji","Segoe UI","Segoe UI Emoji","Segoe UI Symbol",Helvetica,Arial,sans-serif}`;
 
   if (style.styleSheet) {
     style.styleSheet.cssText = css;
