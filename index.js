@@ -2,6 +2,8 @@
  * Appends a emoji font to render the emojers properly
  */
 const createStyle = function () {
+  if (!isBrowser()) return;
+
   const style = document.createElement('style');
   style.rel = 'stylesheet';
   style.type = 'text/css';

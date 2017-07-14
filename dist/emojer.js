@@ -84,6 +84,8 @@ return /******/ (function(modules) { // webpackBootstrap
  * Appends a emoji font to render the emojers properly
  */
 var createStyle = function createStyle() {
+  if (!isBrowser()) return;
+
   var style = document.createElement('style');
   style.rel = 'stylesheet';
   style.type = 'text/css';
