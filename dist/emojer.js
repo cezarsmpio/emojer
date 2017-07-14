@@ -81,6 +81,25 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /**
+ * Appends a emoji font to render the emojers properly
+ */
+var createStyle = function createStyle() {
+  var style = document.createElement('style');
+  style.rel = 'stylesheet';
+  style.type = 'text/css';
+
+  var css = '.emojer-icon{font-family:"Apple Color Emoji","Segoe UI","Segoe UI Emoji","Segoe UI Symbol",Helvetica,Arial,sans-serif}';
+
+  if (style.styleSheet) {
+    style.styleSheet.cssText = css;
+  } else {
+    style.appendChild(document.createTextNode(css));
+  }
+
+  document.body.appendChild(style);
+};
+
+/**
  * The list of the emojis following their char codes
  */
 var emojiCodes = {
@@ -137,6 +156,23 @@ var addEmoji = function addEmoji(character, charCode) {
 };
 
 /**
+ * Configs
+ */
+var configs = {
+  span_class: [],
+  html: true
+};
+
+/**
+ * Sets the new configs to be passed to the emojer
+ *
+ * @param {object} newConfigs The new configs to be replaced
+ */
+var setConfigs = function setConfigs(newConfigs) {
+  configs = Object.assign({}, configs, newConfigs);
+};
+
+/**
  * Escapes some characters to be a valid RegExp expression
  *
  * @param {String} str The string to be replaced
@@ -170,7 +206,9 @@ var replace = function replace(text) {
   for (var x in emojiCodes) {
     var code = emojiCodes[x];
 
-    text = text.replace(new RegExp(escapeRegExp(x), 'g'), fromCodePoint(code));
+    var value = configs.html === true ? '<span class="emojer-icon ' + configs.span_class.join(' ') + '">' + fromCodePoint(code) + '</span>' : fromCodePoint(code);
+
+    text = text.replace(new RegExp(escapeRegExp(x), 'g'), value);
   }
 
   return text;
@@ -191,9 +229,22 @@ var parse = function parse(source) {
   }
 };
 
+/**
+ * Call the methods to initialize the application
+ */
+var init = function init() {
+  createStyle();
+};
+
+/**
+ * Run app, run!
+ */
+init();
+
 module.exports = {
   parse: parse,
-  addEmoji: addEmoji
+  addEmoji: addEmoji,
+  setConfigs: setConfigs
 };
 
 /***/ })
