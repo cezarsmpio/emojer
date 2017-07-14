@@ -154,12 +154,6 @@ S2
       const compile = value => {
         return emojer.parse(value).replace(/\r?\n/g, '<br />');
       };
-
-      // emojer.setConfigs({
-      //   html: true,
-      //   span_class: 'oi ahsdjasjhd'
-      // });
-
       source.focus();
       result.innerHTML = compile(source.value);
       source.addEventListener('input', e => {
