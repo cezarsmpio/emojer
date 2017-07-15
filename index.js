@@ -1,25 +1,4 @@
 /**
- * Appends a emoji font to render the emojers properly
- */
-const createStyle = function () {
-  if (!isBrowser()) return;
-
-  const style = document.createElement('style');
-  style.rel = 'stylesheet';
-  style.type = 'text/css';
-
-  const css = `.emojer-icon{font-family:"Apple Color Emoji","Segoe UI","Segoe UI Emoji","Segoe UI Symbol",Helvetica,Arial,sans-serif}`;
-
-  if (style.styleSheet) {
-    style.styleSheet.cssText = css;
-  } else {
-    style.appendChild(document.createTextNode(css));
-  }
-
-  document.body.appendChild(style);
-};
-
-/**
  * The list of the emojis following their char codes
  */
 const emojiCodes = {
@@ -64,6 +43,33 @@ const emojiCodes = {
 };
 
 /**
+ * Configs
+ */
+let configs = {
+  span_class: [],
+  html: true
+};
+
+/**
+ * Appends a emoji font to render the emojers properly
+ */
+const createStyle = function () {
+  const style = document.createElement('style');
+  style.rel = 'stylesheet';
+  style.type = 'text/css';
+
+  const css = `.emojer-icon{font-family:"Apple Color Emoji","Segoe UI","Segoe UI Emoji","Segoe UI Symbol",Helvetica,Arial,sans-serif}`;
+
+  if (style.styleSheet) {
+    style.styleSheet.cssText = css;
+  } else {
+    style.appendChild(document.createTextNode(css));
+  }
+
+  document.body.appendChild(style);
+};
+
+/**
  * Add a new emoji to the list
  *
  * @param {String} character The character to be replaced by emoji
@@ -74,14 +80,6 @@ const addEmoji = function(character, charCode) {
     throw new Error('emojer: charCode must be a number.');
 
   emojiCodes[character] = charCode;
-};
-
-/**
- * Configs
- */
-let configs = {
-  span_class: [],
-  html: true
 };
 
 /**
@@ -162,7 +160,9 @@ const parse = function(source) {
  * Call the methods to initialize the application
  */
 const init = function () {
-  createStyle();
+  if (!isBrowser()) {
+    createStyle();
+  }
 };
 
 /**
