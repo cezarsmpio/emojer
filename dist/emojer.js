@@ -1,105 +1,8 @@
-(function webpackUniversalModuleDefinition(root, factory) {
-	if(typeof exports === 'object' && typeof module === 'object')
-		module.exports = factory();
-	else if(typeof define === 'function' && define.amd)
-		define([], factory);
-	else if(typeof exports === 'object')
-		exports["emojer"] = factory();
-	else
-		root["emojer"] = factory();
-})(this, function() {
-return /******/ (function(modules) { // webpackBootstrap
-/******/ 	// The module cache
-/******/ 	var installedModules = {};
-/******/
-/******/ 	// The require function
-/******/ 	function __webpack_require__(moduleId) {
-/******/
-/******/ 		// Check if module is in cache
-/******/ 		if(installedModules[moduleId]) {
-/******/ 			return installedModules[moduleId].exports;
-/******/ 		}
-/******/ 		// Create a new module (and put it into the cache)
-/******/ 		var module = installedModules[moduleId] = {
-/******/ 			i: moduleId,
-/******/ 			l: false,
-/******/ 			exports: {}
-/******/ 		};
-/******/
-/******/ 		// Execute the module function
-/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
-/******/
-/******/ 		// Flag the module as loaded
-/******/ 		module.l = true;
-/******/
-/******/ 		// Return the exports of the module
-/******/ 		return module.exports;
-/******/ 	}
-/******/
-/******/
-/******/ 	// expose the modules object (__webpack_modules__)
-/******/ 	__webpack_require__.m = modules;
-/******/
-/******/ 	// expose the module cache
-/******/ 	__webpack_require__.c = installedModules;
-/******/
-/******/ 	// define getter function for harmony exports
-/******/ 	__webpack_require__.d = function(exports, name, getter) {
-/******/ 		if(!__webpack_require__.o(exports, name)) {
-/******/ 			Object.defineProperty(exports, name, {
-/******/ 				configurable: false,
-/******/ 				enumerable: true,
-/******/ 				get: getter
-/******/ 			});
-/******/ 		}
-/******/ 	};
-/******/
-/******/ 	// getDefaultExport function for compatibility with non-harmony modules
-/******/ 	__webpack_require__.n = function(module) {
-/******/ 		var getter = module && module.__esModule ?
-/******/ 			function getDefault() { return module['default']; } :
-/******/ 			function getModuleExports() { return module; };
-/******/ 		__webpack_require__.d(getter, 'a', getter);
-/******/ 		return getter;
-/******/ 	};
-/******/
-/******/ 	// Object.prototype.hasOwnProperty.call
-/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
-/******/
-/******/ 	// __webpack_public_path__
-/******/ 	__webpack_require__.p = "/dist/";
-/******/
-/******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 0);
-/******/ })
-/************************************************************************/
-/******/ ([
-/* 0 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-/**
- * Appends a emoji font to render the emojers properly
- */
-var createStyle = function createStyle() {
-  if (!isBrowser()) return;
-
-  var style = document.createElement('style');
-  style.rel = 'stylesheet';
-  style.type = 'text/css';
-
-  var css = '.emojer-icon{font-family:"Apple Color Emoji","Segoe UI","Segoe UI Emoji","Segoe UI Symbol",Helvetica,Arial,sans-serif}';
-
-  if (style.styleSheet) {
-    style.styleSheet.cssText = css;
-  } else {
-    style.appendChild(document.createTextNode(css));
-  }
-
-  document.body.appendChild(style);
-};
+(function (global, factory) {
+	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
+	typeof define === 'function' && define.amd ? define(['exports'], factory) :
+	(factory((global.emojer = {})));
+}(this, (function (exports) { 'use strict';
 
 /**
  * The list of the emojis following their char codes
@@ -146,6 +49,33 @@ var emojiCodes = {
 };
 
 /**
+ * Configs
+ */
+var configs = {
+  span_class: [],
+  html: true
+};
+
+/**
+ * Appends a emoji font to render the emojers properly
+ */
+var createStyle = function createStyle() {
+  var style = document.createElement('style');
+  style.rel = 'stylesheet';
+  style.type = 'text/css';
+
+  var css = '.emojer-icon{font-family:"Apple Color Emoji","Segoe UI","Segoe UI Emoji","Segoe UI Symbol",Helvetica,Arial,sans-serif}';
+
+  if (style.styleSheet) {
+    style.styleSheet.cssText = css;
+  } else {
+    style.appendChild(document.createTextNode(css));
+  }
+
+  document.body.appendChild(style);
+};
+
+/**
  * Add a new emoji to the list
  *
  * @param {String} character The character to be replaced by emoji
@@ -155,14 +85,6 @@ var addEmoji = function addEmoji(character, charCode) {
   if (typeof charCode !== 'number') throw new Error('emojer: charCode must be a number.');
 
   emojiCodes[character] = charCode;
-};
-
-/**
- * Configs
- */
-var configs = {
-  span_class: [],
-  html: true
 };
 
 /**
@@ -240,7 +162,9 @@ var parse = function parse(source) {
  * Call the methods to initialize the application
  */
 var init = function init() {
-  createStyle();
+  if (isBrowser()) {
+    createStyle();
+  }
 };
 
 /**
@@ -248,12 +172,10 @@ var init = function init() {
  */
 init();
 
-module.exports = {
-  parse: parse,
-  addEmoji: addEmoji,
-  setConfigs: setConfigs
-};
+exports.addEmoji = addEmoji;
+exports.setConfigs = setConfigs;
+exports.parse = parse;
 
-/***/ })
-/******/ ]);
-});
+Object.defineProperty(exports, '__esModule', { value: true });
+
+})));

@@ -75,7 +75,7 @@ const createStyle = function () {
  * @param {String} character The character to be replaced by emoji
  * @param {Number} charCode The char code
  */
-const addEmoji = function(character, charCode) {
+export const addEmoji = function(character, charCode) {
   if (typeof charCode !== 'number')
     throw new Error('emojer: charCode must be a number.');
 
@@ -87,7 +87,7 @@ const addEmoji = function(character, charCode) {
  *
  * @param {object} newConfigs The new configs to be replaced
  */
-const setConfigs = function (newConfigs) {
+export const setConfigs = function (newConfigs) {
   configs = Object.assign({}, configs, newConfigs);
 };
 
@@ -145,7 +145,7 @@ const replace = function(text) {
  *
  * @param {String} source The source that will be replaced
  */
-const parse = function(source) {
+export const parse = function(source) {
   try {
     if (typeof source !== 'string')
       throw new Error('The value needs to be a string.');
@@ -160,7 +160,7 @@ const parse = function(source) {
  * Call the methods to initialize the application
  */
 const init = function () {
-  if (!isBrowser()) {
+  if (isBrowser()) {
     createStyle();
   }
 };
@@ -169,9 +169,3 @@ const init = function () {
  * Run app, run!
  */
 init();
-
-module.exports = {
-  parse,
-  addEmoji,
-  setConfigs
-};
