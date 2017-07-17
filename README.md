@@ -16,7 +16,8 @@ The result will be: My rock text :metal: :stuck_out_tongue_winking_eye:
 
 ## Demo
 
-https://cezarlz.github.io/emojer/
+* Playground: https://cezarlz.github.io/emojer/
+* Chat example: https://codepen.io/CezarLuiz0/pen/xrNKwm
 
 ## Install
 
