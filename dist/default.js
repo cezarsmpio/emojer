@@ -1,0 +1,60 @@
+(function (global, factory) {
+	typeof exports === 'object' && typeof module !== 'undefined' ? factory() :
+	typeof define === 'function' && define.amd ? define(factory) :
+	(factory());
+}(this, (function () { 'use strict';
+
+emojer.addEmoji(":)", 0x1f603);
+emojer.addEmoji(":-)", 0x1f603);
+emojer.addEmoji(":]", 0x1f603);
+emojer.addEmoji("=)", 0x1f603);
+emojer.addEmoji("=]", 0x1f603);
+emojer.addEmoji("(:", 0x1f603);
+emojer.addEmoji("[:", 0x1f603);
+emojer.addEmoji("(=", 0x1f603);
+emojer.addEmoji("[=", 0x1f603);
+emojer.addEmoji(":3", 0x1f60a);
+emojer.addEmoji(":$", 0x1f60a);
+emojer.addEmoji(":D", 0x1f601);
+emojer.addEmoji("=D", 0x1f601);
+emojer.addEmoji(";)", 0x1f609);
+emojer.addEmoji(";-)", 0x1f609);
+emojer.addEmoji(";]", 0x1f609);
+emojer.addEmoji("(H)", 0x1f60e);
+emojer.addEmoji(":*", 0x1f618);
+emojer.addEmoji(":-*", 0x1f618);
+emojer.addEmoji(";*", 0x1f618);
+emojer.addEmoji(":|", 0x1f611);
+emojer.addEmoji(":O", 0x1f62e);
+emojer.addEmoji("=-O", 0x1f62e);
+emojer.addEmoji(":P", 0x1f60b);
+emojer.addEmoji(":-P", 0x1f60b);
+emojer.addEmoji(";P", 0x1f61c);
+emojer.addEmoji(":'(", 0x1f62d);
+emojer.addEmoji(":'[", 0x1f62d);
+emojer.addEmoji(")':", 0x1f62d);
+emojer.addEmoji("]':", 0x1f62d);
+emojer.addEmoji(":#", 0x1f910);
+emojer.addEmoji("(A)", 0x1f607);
+emojer.addEmoji(":(", 0x1f614);
+emojer.addEmoji(":/", 0x1f614);
+emojer.addEmoji(":-(", 0x1f614);
+emojer.addEmoji(":[", 0x1f614);
+emojer.addEmoji(":@", 0x1f621);
+emojer.addEmoji("(6)", 0x1f608);
+emojer.addEmoji("+(", 0x1f922);
+emojer.addEmoji("+[", 0x1f922);
+emojer.addEmoji("<3", 0x2764);
+emojer.addEmoji("S2", 0x2764);
+emojer.addEmoji("(L)", 0x2764);
+emojer.addEmoji("(8)", 0x1f3b5);
+emojer.addEmoji("(Y)", 0x1f44d);
+emojer.addEmoji("(OK)", 0x1f44c);
+emojer.addEmoji(":rock:", 0x1f918);
+emojer.addEmoji("*_*", 0x1f60d);
+emojer.addEmoji("+_+", 0x1f60d);
+emojer.addEmoji(">_<", 0x1f623);
+emojer.addEmoji("O_O", 0x1f631);
+emojer.addEmoji(":x", 0x1f636);
+
+})));
