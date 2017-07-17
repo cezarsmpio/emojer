@@ -77,7 +77,7 @@ By default, emojer adds the `emojer-icon` css class in every emoji rendered if t
 ## Emojis Available
 
 ```
-:) :] =) =] (: [: (= [= :3 :D =D ;) ;] (H) :* :| :O :P ;P :'( :'[ )': ]': :# (A) :( :[ :@ (6) +( +[ <3 S2 (L) (8) (Y) (OK) :rock:
+:) :] =) =] (: [: (= [= :3 :D =D ;) ;] (H) :* :| :O :P ;P :'( :'[ )': ]': :# (A) :( :[ :@ (6) +( +[ <3 S2 (L) (8) (Y) (OK) :rock: :-) :$ ;-) :-* ;* =-O :-P :/ :-P *_* +_+ >_< O_O
 ```
 
 ## Contributing

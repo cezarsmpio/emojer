@@ -3,6 +3,7 @@
  */
 const emojiCodes = {
   ':)': 0x1f603,
+  ':-)': 0x1f603,
   ':]': 0x1f603,
   '=)': 0x1f603,
   '=]': 0x1f603,
@@ -11,15 +12,21 @@ const emojiCodes = {
   '(=': 0x1f603,
   '[=': 0x1f603,
   ':3': 0x1f60a,
+  ':$': 0x1f60a,
   ':D': 0x1f601,
   '=D': 0x1f601,
   ';)': 0x1f609,
+  ';-)': 0x1f609,
   ';]': 0x1f609,
   '(H)': 0x1f60b,
   ':*': 0x1f618,
+  ':-*': 0x1f618,
+  ';*': 0x1f618,
   ':|': 0x1f611,
   ':O': 0x1f62e,
+  '=-O': 0x1f62e,
   ':P': 0x1f60b,
+  ':-P': 0x1f60b,
   ';P': 0x1f61c,
   ":'(": 0x1f62d,
   ":'[": 0x1f62d,
@@ -28,6 +35,8 @@ const emojiCodes = {
   ':#': 0x1f910,
   '(A)': 0x1f607,
   ':(': 0x1f614,
+  ':/': 0x1f614,
+  ':-(': 0x1f614,
   ':[': 0x1f614,
   ':@': 0x1f621,
   '(6)': 0x1f608,
@@ -39,7 +48,11 @@ const emojiCodes = {
   '(8)': 0x1f3b5,
   '(Y)': 0x1f44d,
   '(OK)': 0x1f44c,
-  ':rock:': 0x1f918
+  ':rock:': 0x1f918,
+  '*_*': 0x1f60d,
+  '+_+': 0x1f60d,
+  '>_<': 0x1f623,
+  'O_O': 0x1f631,
 };
 
 /**
@@ -53,7 +66,7 @@ let configs = {
 /**
  * Appends a emoji font to render the emojers properly
  */
-const createStyle = function () {
+const createStyle = function() {
   const style = document.createElement('style');
   style.rel = 'stylesheet';
   style.type = 'text/css';
@@ -87,7 +100,7 @@ export const addEmoji = function(character, charCode) {
  *
  * @param {object} newConfigs The new configs to be replaced
  */
-export const setConfigs = function (newConfigs) {
+export const setConfigs = function(newConfigs) {
   configs = Object.assign({}, configs, newConfigs);
 };
 
@@ -119,7 +132,9 @@ const fromCodePoint = function() {
 /**
  * Detects if the env is a browser.
  */
-const isBrowser = new Function('try {return this===window;}catch(e){ return false;}');
+const isBrowser = new Function(
+  'try {return this===window;}catch(e){ return false;}'
+);
 
 /**
  * Main function. Find into the text the characters to be replaced by the emojis according to the emojiCodes.
@@ -130,9 +145,12 @@ const replace = function(text) {
   for (let x in emojiCodes) {
     let code = emojiCodes[x];
 
-    const value = configs.html === true && isBrowser()
-      ? `<span class="emojer-icon ${configs.span_class.join(' ')}">${fromCodePoint(code)}</span>`
-      : fromCodePoint(code);
+    const value =
+      configs.html === true && isBrowser()
+        ? `<span class="emojer-icon ${configs.span_class.join(
+            ' '
+          )}">${fromCodePoint(code)}</span>`
+        : fromCodePoint(code);
 
     text = text.replace(new RegExp(escapeRegExp(x), 'g'), value);
   }
@@ -159,7 +177,7 @@ export const parse = function(source) {
 /**
  * Call the methods to initialize the application
  */
-const init = function () {
+const init = function() {
   if (isBrowser()) {
     createStyle();
   }
