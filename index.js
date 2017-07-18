@@ -143,7 +143,6 @@ const isBrowser = new Function(
  * @param {String} text The text to be replaced by the emojis
  */
 const replace = function(text) {
-  console.time('a');
   const keys = Object.keys(emojiCodes);
   let i = keys.length;
 
@@ -160,7 +159,6 @@ const replace = function(text) {
 
     text = text.replace(new RegExp(escapeRegExp(key), 'g'), value);
   }
-  console.timeEnd('a');
 
   return text;
 };

@@ -146,7 +146,6 @@ var isBrowser = new Function('try {return this===window;}catch(e){ return false;
  * @param {String} text The text to be replaced by the emojis
  */
 var replace = function replace(text) {
-  console.time('a');
   var keys = Object.keys(emojiCodes);
   var i = keys.length;
 
@@ -158,7 +157,6 @@ var replace = function replace(text) {
 
     text = text.replace(new RegExp(escapeRegExp(key), 'g'), value);
   }
-  console.timeEnd('a');
 
   return text;
 };
