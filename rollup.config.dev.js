@@ -1,4 +1,4 @@
-import babel from 'rollup-plugin-babel';
+import babel from "rollup-plugin-babel";
 
 export default [
   {
@@ -6,13 +6,13 @@ export default [
     moduleName: 'emojer',
     dest: 'dist/emojer.js',
     plugins: [
-        babel({
-            exclude: 'node_modules/**'
-        })
+      babel({
+        exclude: 'node_modules/**'
+      })
     ],
     format: 'umd',
     watch: {
-        exclude: ['node_modules/**']
+      exclude: ['node_modules/**']
     }
   },
   {
@@ -20,13 +20,13 @@ export default [
     moduleName: 'default-emojis',
     dest: 'dist/default.js',
     plugins: [
-        babel({
-            exclude: 'node_modules/**'
-        })
+      babel({
+        exclude: 'node_modules/**'
+      })
     ],
     format: 'umd',
     watch: {
-        exclude: ['node_modules/**']
+      exclude: ['node_modules/**']
     }
   },
 ];
