@@ -146,13 +146,19 @@ var isBrowser = new Function('try {return this===window;}catch(e){ return false;
  * @param {String} text The text to be replaced by the emojis
  */
 var replace = function replace(text) {
-  for (var x in emojiCodes) {
-    var code = emojiCodes[x];
+  console.time('a');
+  var keys = Object.keys(emojiCodes);
+  var i = keys.length;
+
+  while (i--) {
+    var key = keys[i];
+    var code = emojiCodes[key];
 
     var value = configs.html === true && isBrowser() ? '<span class="emojer-icon ' + configs.span_class.join(' ') + '">' + fromCodePoint(code) + '</span>' : fromCodePoint(code);
 
-    text = text.replace(new RegExp(escapeRegExp(x), 'g'), value);
+    text = text.replace(new RegExp(escapeRegExp(key), 'g'), value);
   }
+  console.timeEnd('a');
 
   return text;
 };

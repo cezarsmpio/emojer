@@ -143,8 +143,13 @@ const isBrowser = new Function(
  * @param {String} text The text to be replaced by the emojis
  */
 const replace = function(text) {
-  for (let x in emojiCodes) {
-    let code = emojiCodes[x];
+  console.time('a');
+  const keys = Object.keys(emojiCodes);
+  let i = keys.length;
+
+  while (i--) {
+    let key = keys[i];
+    let code = emojiCodes[key];
 
     const value =
       configs.html === true && isBrowser()
@@ -153,8 +158,9 @@ const replace = function(text) {
           )}">${fromCodePoint(code)}</span>`
         : fromCodePoint(code);
 
-    text = text.replace(new RegExp(escapeRegExp(x), 'g'), value);
+    text = text.replace(new RegExp(escapeRegExp(key), 'g'), value);
   }
+  console.timeEnd('a');
 
   return text;
 };
